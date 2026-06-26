@@ -1,0 +1,28 @@
+version : "3.8"
+
+services:
+  server:
+    build:
+      context: .
+    environment:
+      - NODE_ENV=production
+      - MONGO_UR=${MONGO_UR}
+      - JWT_SECRET=${JWT_SECRET}
+      - PORT=${PORT}
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/app
+    command: npm run dev
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:7.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:

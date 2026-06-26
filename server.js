@@ -19,4 +19,4 @@ app.use('/api/admin', adminRoutes);
 app.use((req, res) => res.status(404).json({ message: 'Route not found' }));
 
 const PORT = 8000;
-app.listen(PORT, () => console.log('Server running on port ' + PORT));
+app.listen(PORT, '0.0.0.0' ,() => console.log('Server running on port ' + PORT));
